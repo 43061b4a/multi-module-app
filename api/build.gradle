@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id "org.springframework.boot"  version "2.1.1.RELEASE"
+    id 'io.spring.dependency-management'
+    id 'idea'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group 'org.cacao.api'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":lib")
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testCompile 'com.jayway.jsonpath:json-path'
+    testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

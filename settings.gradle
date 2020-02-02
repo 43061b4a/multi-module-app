@@ -1,0 +1,5 @@
+rootProject.name = 'multi-module-app'
+include 'api'
+include 'background-jobs'
+include 'lib'
+
